@@ -132,4 +132,4 @@ Search file contents using regex patterns.
 
 ## License
 
-MIT
+Apache-2.0

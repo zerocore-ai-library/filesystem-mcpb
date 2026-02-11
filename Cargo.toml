@@ -2,6 +2,7 @@
 name = "filesystem"
 version = "0.1.0"
 edition = "2024"
+license = "Apache-2.0"
 description = "File system operations for AI agents. Based on Claude Code's Read, Write, Edit, Glob, and Grep tool designs."
 
 [dependencies]
