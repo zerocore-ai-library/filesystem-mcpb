@@ -716,7 +716,7 @@ impl Server {
     ///
     /// Returns file content with line numbers in cat -n format (1-indexed).
     /// Supports offset/limit for reading large files in chunks.
-    #[tool(name = "filesystem__read", description = "Read a file from the local filesystem.")]
+    #[tool(name = "read", description = "Read a file from the local filesystem.")]
     async fn read(&self, params: Parameters<ReadInput>) -> Result<Json<ReadOutput>, McpError> {
         let input: ReadInput = params.0;
 
@@ -785,7 +785,7 @@ impl Server {
     ///
     /// Overwrites the entire file content. Creates the file if it doesn't exist.
     /// Requires reading existing files first before overwriting.
-    #[tool(name = "filesystem__write", description = "Write content to a file.")]
+    #[tool(name = "write", description = "Write content to a file.")]
     async fn write(&self, params: Parameters<WriteInput>) -> Result<Json<WriteOutput>, McpError> {
         let input: WriteInput = params.0;
 
@@ -833,7 +833,7 @@ impl Server {
     /// Finds old_string and replaces it with new_string. By default, fails if
     /// old_string is not unique unless replace_all is true.
     /// Requires reading the file first before editing.
-    #[tool(name = "filesystem__edit", description = "Edit a file by replacing exact string matches.")]
+    #[tool(name = "edit", description = "Edit a file by replacing exact string matches.")]
     async fn edit(&self, params: Parameters<EditInput>) -> Result<Json<EditOutput>, McpError> {
         let input: EditInput = params.0;
 
@@ -900,7 +900,7 @@ impl Server {
     /// Finds files matching a glob pattern.
     ///
     /// Supports standard glob patterns like *, **, ?, {a,b}, [abc].
-    #[tool(name = "filesystem__glob", description = "Find files matching a glob pattern.")]
+    #[tool(name = "glob", description = "Find files matching a glob pattern.")]
     async fn glob(&self, params: Parameters<GlobInput>) -> Result<Json<GlobOutput>, McpError> {
         let input: GlobInput = params.0;
 
@@ -956,7 +956,7 @@ impl Server {
     /// Searches file contents using regex patterns.
     ///
     /// Supports ripgrep-style regex patterns with various output modes.
-    #[tool(name = "filesystem__grep", description = "Search file contents using regex patterns.")]
+    #[tool(name = "grep", description = "Search file contents using regex patterns.")]
     async fn grep(&self, params: Parameters<GrepInput>) -> Result<Json<GrepOutput>, McpError> {
         let input: GrepInput = params.0;
 
@@ -1111,7 +1111,7 @@ mod tests {
         path.to_string_lossy().to_string()
     }
 
-    // ==================== filesystem__read tests ====================
+    // ==================== read tests ====================
 
     #[test]
     fn test_read_existing_file() {
@@ -1167,7 +1167,7 @@ mod tests {
         assert!(formatted.contains("2\tsecond"));
     }
 
-    // ==================== filesystem__write tests ====================
+    // ==================== write tests ====================
 
     #[test]
     fn test_write_new_file() {
@@ -1207,7 +1207,7 @@ mod tests {
         assert!(result.is_err());
     }
 
-    // ==================== filesystem__edit tests ====================
+    // ==================== edit tests ====================
 
     #[test]
     fn test_edit_single_replacement() {
@@ -1261,7 +1261,7 @@ mod tests {
         assert_eq!(old, new);
     }
 
-    // ==================== filesystem__glob tests ====================
+    // ==================== glob tests ====================
 
     #[test]
     fn test_glob_match_pattern() {
@@ -1306,7 +1306,7 @@ mod tests {
         assert!(result.is_err());
     }
 
-    // ==================== filesystem__grep tests ====================
+    // ==================== grep tests ====================
 
     #[test]
     fn test_grep_files_with_matches() {

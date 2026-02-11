@@ -4,7 +4,7 @@ File system operations for AI agents. Based on [Claude Code's Read, Write, Edit,
 
 ## Tools
 
-### `filesystem__read`
+### `read`
 
 Read a file from the local filesystem.
 
@@ -24,7 +24,7 @@ Read a file from the local filesystem.
 | `end_line` | integer | Ending line number of the returned content |
 | `truncated` | boolean | Whether the file was truncated |
 
-### `filesystem__write`
+### `write`
 
 Write content to a file.
 
@@ -39,7 +39,7 @@ Write content to a file.
 |-------|------|-------------|
 | `bytes_written` | integer | Number of bytes written |
 
-### `filesystem__edit`
+### `edit`
 
 Edit a file by replacing exact string matches.
 
@@ -56,7 +56,7 @@ Edit a file by replacing exact string matches.
 |-------|------|-------------|
 | `replacements` | integer | Number of replacements made |
 
-### `filesystem__glob`
+### `glob`
 
 Find files matching a glob pattern.
 
@@ -71,7 +71,7 @@ Find files matching a glob pattern.
 |-------|------|-------------|
 | `files` | array | List of matching file paths |
 
-### `filesystem__grep`
+### `grep`
 
 Search file contents using regex patterns.
 
@@ -117,17 +117,17 @@ tool validate /path/to/filesystem
 
 ```bash
 # Test reading a file
-tool call /path/to/filesystem -m filesystem__read -p file_path=/path/to/file.txt
+tool call /path/to/filesystem -m read -p file_path=/path/to/file.txt
 ```
 
 ```bash
 # Search for files
-tool call /path/to/filesystem -m filesystem__glob -p pattern="**/*.rs"
+tool call /path/to/filesystem -m glob -p pattern="**/*.rs"
 ```
 
 ```bash
 # Search file contents
-tool call /path/to/filesystem -m filesystem__grep -p pattern=TODO -p path=.
+tool call /path/to/filesystem -m grep -p pattern=TODO -p path=.
 ```
 
 ### Manual Build

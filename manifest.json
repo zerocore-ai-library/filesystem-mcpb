@@ -27,30 +27,30 @@
   },
   "tools": [
     {
-      "name": "filesystem__read",
+      "name": "read",
       "description": "Read a file from the local filesystem"
     },
     {
-      "name": "filesystem__write",
+      "name": "write",
       "description": "Write content to a file"
     },
     {
-      "name": "filesystem__edit",
+      "name": "edit",
       "description": "Edit a file by replacing exact string matches"
     },
     {
-      "name": "filesystem__glob",
+      "name": "glob",
       "description": "Find files matching a glob pattern"
     },
     {
-      "name": "filesystem__grep",
+      "name": "grep",
       "description": "Search file contents using regex patterns"
     }
   ],
   "_meta": {
     "store.tool.mcpb": {
       "scripts": {
-        "build": "cargo build --release"
+        "build": "cargo build --release && mkdir -p dist && cp target/release/filesystem dist/"
       },
       "compatibility": {
         "platforms": [
@@ -66,7 +66,7 @@
         "tools/list": {
           "tools": [
             {
-              "name": "filesystem__read",
+              "name": "read",
               "description": "Read a file from the local filesystem",
               "input_schema": {
                 "type": "object",
@@ -122,7 +122,7 @@
               }
             },
             {
-              "name": "filesystem__write",
+              "name": "write",
               "description": "Write content to a file",
               "input_schema": {
                 "type": "object",
@@ -155,7 +155,7 @@
               }
             },
             {
-              "name": "filesystem__edit",
+              "name": "edit",
               "description": "Edit a file by replacing exact string matches",
               "input_schema": {
                 "type": "object",
@@ -197,7 +197,7 @@
               }
             },
             {
-              "name": "filesystem__glob",
+              "name": "glob",
               "description": "Find files matching a glob pattern",
               "input_schema": {
                 "type": "object",
@@ -232,7 +232,7 @@
               }
             },
             {
-              "name": "filesystem__grep",
+              "name": "grep",
               "description": "Search file contents using regex patterns",
               "input_schema": {
                 "type": "object",
