@@ -2,6 +2,49 @@
 
 File system operations for AI agents. Based on [Claude Code's Read, Write, Edit, Glob, and Grep tool designs](https://gist.github.com/bgauryy/0cdb9aa337d01ae5bd0c803943aa36bd).
 
+## Setup
+
+### Using tool CLI (Recommended)
+
+Install from https://github.com/zerocore-ai/tool-cli
+
+```bash
+# Build the tool
+tool run build /path/to/filesystem
+```
+
+```bash
+# Validate the manifest
+tool validate /path/to/filesystem
+```
+
+```bash
+# Test reading a file
+tool call /path/to/filesystem -m read -p file_path=/path/to/file.txt
+```
+
+```bash
+# Search for files
+tool call /path/to/filesystem -m glob -p pattern="**/*.rs"
+```
+
+```bash
+# Search file contents
+tool call /path/to/filesystem -m grep -p pattern=TODO -p path=.
+```
+
+### Manual Build
+
+```bash
+cargo build --release
+```
+
+## Testing
+
+```bash
+cargo test
+```
+
 ## Tools
 
 ### `read`
@@ -98,49 +141,6 @@ Search file contents using regex patterns.
 | `matches` | array | List of matches with `path`, `line_number`, `content`, or `count` |
 | `total` | integer | Total number of matches/files |
 | `truncated` | boolean | Whether results were truncated by head_limit |
-
-## Setup
-
-### Using tool CLI (Recommended)
-
-Install from https://github.com/zerocore-ai/tool-cli
-
-```bash
-# Build the tool
-tool run build /path/to/filesystem
-```
-
-```bash
-# Validate the manifest
-tool validate /path/to/filesystem
-```
-
-```bash
-# Test reading a file
-tool call /path/to/filesystem -m read -p file_path=/path/to/file.txt
-```
-
-```bash
-# Search for files
-tool call /path/to/filesystem -m glob -p pattern="**/*.rs"
-```
-
-```bash
-# Search file contents
-tool call /path/to/filesystem -m grep -p pattern=TODO -p path=.
-```
-
-### Manual Build
-
-```bash
-cargo build --release
-```
-
-## Testing
-
-```bash
-cargo test
-```
 
 ## License
 
