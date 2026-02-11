@@ -4,45 +4,33 @@ File system operations for AI agents. Based on [Claude Code's Read, Write, Edit,
 
 ## Setup
 
-### Using tool CLI (Recommended)
+### Using tool CLI
 
-Install from https://github.com/zerocore-ai/tool-cli
+Install the CLI from https://github.com/zerocore-ai/tool-cli
 
 ```bash
-# Build the tool
-tool run build /path/to/filesystem
+# Install from tool.store
+tool install library/filesystem
 ```
 
 ```bash
-# Validate the manifest
-tool validate /path/to/filesystem
+# View available tools
+tool info library/filesystem
 ```
 
 ```bash
-# Test reading a file
-tool call /path/to/filesystem -m read -p file_path=/path/to/file.txt
+# Read a file
+tool call library/filesystem -m read -p file_path=/path/to/file.txt
 ```
 
 ```bash
 # Search for files
-tool call /path/to/filesystem -m glob -p pattern="**/*.rs"
+tool call library/filesystem -m glob -p pattern="**/*.rs"
 ```
 
 ```bash
 # Search file contents
-tool call /path/to/filesystem -m grep -p pattern=TODO -p path=.
-```
-
-### Manual Build
-
-```bash
-cargo build --release
-```
-
-## Testing
-
-```bash
-cargo test
+tool call library/filesystem -m grep -p pattern=TODO -p path=.
 ```
 
 ## Tools
